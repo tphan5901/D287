@@ -63,17 +63,45 @@
     </tbody>
 </table>
 
-<script>
-    document.getElementById('productForm').addEventListener('submit', function(event) {
-    let name = document.getElementById('name').value;
-    let inv = document.getElementById('inventory').value;
-    let price = document.getElementById('price').value;
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+          // Load data from session storage
+          if (sessionStorage.getItem('productData')) {
+              const productData = JSON.parse(sessionStorage.getItem('productData'));
+              document.getElementById('name').value = productData.name || '';
+              document.getElementById('price').value = productData.price || '';
+              document.getElementById('inventory').value = productData.inv || '';
+          }
 
-    if (!name || !inv || !price) {
-        alert('All fields must be filled out');
-        event.preventDefault();
-    }
-});
+          // Save data to session storage on input change
+          document.getElementById('productForm').addEventListener('input', function() {
+              const productData = {
+                  name: document.getElementById('name').value,
+                  price: document.getElementById('price').value,
+                  inv: document.getElementById('inventory').value
+              };
+              sessionStorage.setItem('productData', JSON.stringify(productData));
+          });
+
+          // Clear session storage when navigating back to main page
+          window.addEventListener('beforeunload', function() {
+              if (document.referrer.includes('/mainscreen')) {
+                  sessionStorage.removeItem('productData');
+              }
+          });
+      });
+
+      document.getElementById('productForm').addEventListener('submit', function(event) {
+          let name = document.getElementById('name').value;
+          let inv = document.getElementById('inventory').value;
+          let price = document.getElementById('price').value;
+
+          if (!name || !inv || !price) {
+              alert('All fields must be filled out');
+              event.preventDefault();
+              return;
+          }
+      });
 </script>
 
 

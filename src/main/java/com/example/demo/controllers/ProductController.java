@@ -28,12 +28,11 @@ public class ProductController {
 
     @GetMapping("/addProductForm")
     public String addProductForm(Model model) {
-        // Initialize a new Product object for the form
         Product product = new Product();
         model.addAttribute("product", product);
         model.addAttribute("parts", partService.getAll());
         model.addAttribute("availparts", getAvailableParts());
-        model.addAttribute("assparts", product.getPart()); // Initialize associated parts as empty
+        model.addAttribute("assparts", product.getPart());
         return "productForm";
     }
 
@@ -52,6 +51,7 @@ public class ProductController {
             ProductService repo = context.getBean(ProductServiceImpl.class);
             repo.save(product);
             currentProduct = product;  // Assign the saved product to currentProduct
+            model.addAttribute("clearStorageScript", "localStorage.clear();");
             return "redirect:/mainscreen";
         }
     }
