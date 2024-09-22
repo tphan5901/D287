@@ -42,6 +42,12 @@
             return;
         }
 
+       if (max < min) {
+           alert("Max cannot be less than min.");
+           event.preventDefault();
+           return;
+       }
+
         if (inv < min || inv > max) {
             alert("Inventory must be between Min and Max.");
             event.preventDefault();
