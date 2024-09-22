@@ -16,8 +16,10 @@
     <p>Price <input type="text" id = "price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
     <p>Inventory <input type="text" id = "inventory" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
 
+
     <p><input type="submit" value="Submit" /></p>
 </form>
+
 
 <table class="table table-bordered table-striped">
     <thead class="thead-dark">
@@ -68,7 +70,7 @@
     let price = document.getElementById('price').value;
 
     if (!name || !inv || !price) {
-        alert('All fields should be filled out');
+        alert('All fields must be filled out');
         event.preventDefault();
     }
 });

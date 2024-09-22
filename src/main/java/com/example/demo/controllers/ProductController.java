@@ -1,5 +1,4 @@
 package com.example.demo.controllers;
-
 import com.example.demo.domain.Part;
 import com.example.demo.domain.Product;
 import com.example.demo.service.PartService;
@@ -29,13 +28,12 @@ public class ProductController {
 
     @GetMapping("/addProductForm")
     public String addProductForm(Model model) {
-        product = null;
-        model.addAttribute("parts", partService.getAll());
+        // Initialize a new Product object for the form
         Product product = new Product();
-
         model.addAttribute("product", product);
-        model.addAttribute("availparts",getAvailableParts());
-        model.addAttribute("assparts",product.getPart());
+        model.addAttribute("parts", partService.getAll());
+        model.addAttribute("availparts", getAvailableParts());
+        model.addAttribute("assparts", product.getPart()); // Initialize associated parts as empty
         return "productForm";
     }
 
