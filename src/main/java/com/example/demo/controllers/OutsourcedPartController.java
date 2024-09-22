@@ -19,7 +19,7 @@ public class OutsourcedPartController {
     private final OutsourcedPart outsourcedPart = new OutsourcedPart();
 
     @GetMapping("/OutsourcedPartForm")
-    public String outsourcedPartForm(Model model){
+    public String addOutsourcedPart(Model model){
         // fetch available ID
         Long nextId = outsourcedPartService.getNextId();
         outsourcedPart.setId(nextId);
