@@ -79,7 +79,6 @@ public class ProductController {
             part.getProducts().remove(productToDelete);
             partService.save(part);
         }
-        // Remove all parts from the product
         productToDelete.getPart().clear();
         productService.save(productToDelete); // Save updated product without parts
         productService.deleteById(Id);
