@@ -1,6 +1,5 @@
 package com.example.demo.domain;
 import com.example.demo.validators.ValidDeletePart;
-import com.example.demo.validators.ValidPartInventory;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;

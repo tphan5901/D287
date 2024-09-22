@@ -58,8 +58,8 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/productFormUpdate")
-    public String showProductFormForUpdate(@RequestParam("productID") int Id, Model model) {
+    @GetMapping("/UpdateProductForm")
+    public String UpdateProductForm(@RequestParam("productID") int Id, Model model) {
         model.addAttribute("parts", partService.getAll());
         ProductService repo = context.getBean(ProductServiceImpl.class);
         Product newProduct = repo.searchById(Id);

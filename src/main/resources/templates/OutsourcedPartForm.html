@@ -11,9 +11,8 @@
 
 <form action="#" id="partForm" th:action="@{/showFormAddOutPart}" th:object="${outsourcedpart}" method="POST"}>
     <p><input type="hidden" th:field="*{id}"/></p>
-    <p>Name  <input type="text" id = "name" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
-
-    <label for="price">Price  <input type="text" id = "price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></label>
+    <p>Name  <input type="text" id = "name" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p
+    <label for="price">Price <input type="text" id = "price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></label>
     <p>Inventory <input type="text" id = "inventory" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
     <p>Min  <input type="text" id = "min" th:field="*{minimum}" placeholder="0" class="form-control mb-4 col-4"/></p>
     <p>Max  <input type="text" id = "max" th:field="*{maximum}" placeholder="100" class="form-control mb-4 col-4"/></p>
@@ -40,13 +39,13 @@
         if (min > max) {
             alert("Min cannot be greater than Max.");
             event.preventDefault();
-            return; // Stop further execution
+            return;
         }
 
         if (inv < min || inv > max) {
             alert("Inventory must be between Min and Max.");
             event.preventDefault();
-            return; // Stop further execution
+            return;
         }
     });
 </script>

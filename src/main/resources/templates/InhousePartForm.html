@@ -36,14 +36,14 @@
 
        if (min > max) {
            alert("Min cannot be greater than Max.");
-           event.preventDefault(); // Prevent form submission
+           event.preventDefault();
            return; // Stop further execution
        }
 
        if (inv < min || inv > max) {
            alert("Inventory must be between Min and Max.");
-           event.preventDefault(); // Prevent form submission
-           return; // Stop further execution
+           event.preventDefault();
+           return;
        }
    });
 </script>
