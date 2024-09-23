@@ -1,7 +1,6 @@
-package com.example.demo.domain;
+package com.example.demo.DataObjects;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;

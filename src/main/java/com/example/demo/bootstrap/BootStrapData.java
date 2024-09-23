@@ -1,8 +1,7 @@
 package com.example.demo.bootstrap;
-import com.example.demo.domain.InhousePart;
-import com.example.demo.domain.OutsourcedPart;
-import com.example.demo.domain.Part;
-import com.example.demo.domain.Product;
+import com.example.demo.DataObjects.InhousePart;
+import com.example.demo.DataObjects.OutsourcedPart;
+import com.example.demo.DataObjects.Product;
 import com.example.demo.repositories.OutsourcedPartRepository;
 import com.example.demo.repositories.PartRepository;
 import com.example.demo.repositories.ProductRepository;

@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.InhousePart;
-import com.example.demo.domain.OutsourcedPart;
-import com.example.demo.domain.Part;
+import com.example.demo.DataObjects.InhousePart;
 
 import java.util.List;
 

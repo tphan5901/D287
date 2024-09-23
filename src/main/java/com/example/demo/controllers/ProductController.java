@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
-import com.example.demo.domain.Part;
-import com.example.demo.domain.Product;
+import com.example.demo.DataObjects.Part;
+import com.example.demo.DataObjects.Product;
 import com.example.demo.service.PartService;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.ProductServiceImpl;

@@ -1,5 +1,5 @@
 package com.example.demo.service;
-import com.example.demo.domain.Part;
+import com.example.demo.DataObjects.Part;
 import java.util.List;
 
 public interface PartService {

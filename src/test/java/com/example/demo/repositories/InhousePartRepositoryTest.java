@@ -1,7 +1,6 @@
 package com.example.demo.repositories;
 
-import com.example.demo.domain.InhousePart;
-import com.example.demo.service.PartServiceImpl;
+import com.example.demo.DataObjects.InhousePart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

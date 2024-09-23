@@ -1,5 +1,5 @@
 package com.example.demo.service;
-import com.example.demo.domain.Product;
+import com.example.demo.DataObjects.Product;
 import java.util.List;
 
 

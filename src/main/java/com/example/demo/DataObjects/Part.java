@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.example.demo.DataObjects;
 import com.example.demo.validators.ValidDeletePart;
 import javax.persistence.*;
 import java.io.Serializable;

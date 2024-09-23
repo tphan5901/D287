@@ -1,5 +1,5 @@
 package com.example.demo.controllers;
-import com.example.demo.domain.OutsourcedPart;
+import com.example.demo.DataObjects.OutsourcedPart;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

@@ -1,6 +1,6 @@
 package com.example.demo.validators;
 
-import com.example.demo.domain.Part;
+import com.example.demo.DataObjects.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 

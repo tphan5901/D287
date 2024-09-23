@@ -1,6 +1,6 @@
 package com.example.demo.repositories;
 
-import com.example.demo.domain.OutsourcedPart;
+import com.example.demo.DataObjects.OutsourcedPart;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
