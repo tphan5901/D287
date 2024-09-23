@@ -41,7 +41,7 @@ public class PartController {
 
         if (part.getProducts().isEmpty()) {
             repo.deleteById(Id);
-            return "redirect:/mainscreen";
+            return "redirect:/home";
         } else {
             redirectAttributes.addFlashAttribute("messageTitle", "Error");
             return "redirect:/error";

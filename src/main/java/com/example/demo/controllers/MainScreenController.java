@@ -24,8 +24,8 @@ public class MainScreenController {
         this.productService=productService;
     }
 
-    @GetMapping("/mainscreen")
-    public String display(Model model, @RequestParam(value = "partkeyword", required = false) String partKeyword, @RequestParam(value = "productkeyword", required = false) String productKeyword) {
+    @GetMapping("/home")
+    public String display(Model model, @RequestParam(value = "partkeyword") String partKeyword, @RequestParam(value = "productkeyword") String productKeyword) {
         List<Part> allParts = partService.searchPart(partKeyword);
         List<Product> allProducts = productService.searchProduct(productKeyword);
 
@@ -47,7 +47,7 @@ public class MainScreenController {
         model.addAttribute("partkeyword", partKeyword);
         model.addAttribute("productkeyword", productKeyword);
 
-        return "mainscreen";  // Return view
+        return "home";
     }
 
     @RequestMapping("/about")

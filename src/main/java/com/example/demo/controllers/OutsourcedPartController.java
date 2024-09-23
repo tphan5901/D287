@@ -35,7 +35,7 @@ public class OutsourcedPartController {
         } else {
         OutsourcedPartService repo=context.getBean(OutsourcedPartServiceImpl.class);
         repo.save(part);
-        return "redirect:/mainscreen";
+        return "redirect:/home";
         }
     }
 

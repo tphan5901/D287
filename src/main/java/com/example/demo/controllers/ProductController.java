@@ -52,7 +52,7 @@ public class ProductController {
             repo.save(product);
             currentProduct = product;  // Assign the saved product to currentProduct
             model.addAttribute("clearStorageScript", "localStorage.clear();");
-            return "redirect:/mainscreen";
+            return "redirect:/home";
         }
     }
 
@@ -82,7 +82,7 @@ public class ProductController {
         productToDelete.getPart().clear();
         productService.save(productToDelete); // Save updated product without parts
         productService.deleteById(Id);
-        return "redirect:/mainscreen";
+        return "redirect:/home";
     }
 
     public ProductController(PartService partService) {
@@ -131,7 +131,7 @@ public class ProductController {
 
         newProduct.purchase();
         productService.save(newProduct);
-        return "redirect:/mainscreen";
+        return "redirect:/home";
     }
 
 }
