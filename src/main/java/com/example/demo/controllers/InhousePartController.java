@@ -1,8 +1,7 @@
 package com.example.demo.controllers;
-
 import com.example.demo.DataObjects.InhousePart;
-import com.example.demo.service.InhousePartService;
-import com.example.demo.service.InhousePartServiceImpl;
+import com.example.demo.Service.InhousePartService;
+import com.example.demo.Service.InhousePartServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;

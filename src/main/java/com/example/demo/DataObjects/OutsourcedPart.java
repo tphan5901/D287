@@ -14,3 +14,4 @@ public class OutsourcedPart extends Part{
         this.companyName = companyName;
     }
 }
+

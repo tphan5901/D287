@@ -1,10 +1,11 @@
 package com.example.demo.controllers;
 import com.example.demo.DataObjects.Part;
 import com.example.demo.DataObjects.Product;
-import com.example.demo.service.PartService;
-import com.example.demo.service.ProductService;
+import com.example.demo.Service.PartService;
+import com.example.demo.Service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,22 +25,20 @@ public class MainScreenController {
     }
 
     @GetMapping("/home")
-    public String display(Model model, @RequestParam(value = "partkeyword") String partKeyword, @RequestParam(value = "productkeyword") String productKeyword) {
+    public String display(Model model,
+                          @RequestParam(value = "partkeyword", defaultValue = "") String partKeyword,
+                          @RequestParam(value = "productkeyword", defaultValue = "") String productKeyword) {
         List<Part> allParts = partService.searchPart(partKeyword);
         List<Product> allProducts = productService.searchProduct(productKeyword);
 
-        // Filter parts by keyword if provided
-        if (partKeyword != null && !partKeyword.isEmpty()) {
-            allParts = allParts.stream()
-                    .filter(part -> part.getName().toLowerCase().contains(partKeyword.toLowerCase()))
-                    .collect(Collectors.toList());
-        }
+        // Filter parts by keyword
+        allParts = allParts.stream()
+                .filter(part -> part.getName().toLowerCase().contains(partKeyword.toLowerCase()))
+                .collect(Collectors.toList());
 
-        if (productKeyword != null && !productKeyword.isEmpty()) {
-            allProducts = allProducts.stream()
-                    .filter(product -> product.getName().toLowerCase().contains(productKeyword.toLowerCase()))
-                    .collect(Collectors.toList());
-        }
+        allProducts = allProducts.stream()
+                .filter(product -> product.getName().toLowerCase().contains(productKeyword.toLowerCase()))
+                .collect(Collectors.toList());
 
         model.addAttribute("parts", allParts);
         model.addAttribute("products", allProducts);
@@ -52,6 +51,12 @@ public class MainScreenController {
     @RequestMapping("/about")
     public String about() {
         return "about";
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String handleException(Exception e, Model model) {
+        model.addAttribute("errorMessage", e.getMessage());
+        return "error";
     }
 
 }

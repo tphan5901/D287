@@ -1,4 +1,4 @@
-package com.example.demo.repositories;
+package com.example.demo.Repositories;
 
 import com.example.demo.DataObjects.InhousePart;
 import org.springframework.data.jpa.repository.Query;

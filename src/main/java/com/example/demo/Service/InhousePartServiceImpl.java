@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 
 import com.example.demo.DataObjects.InhousePart;
-import com.example.demo.repositories.InhousePartRepository;
+import com.example.demo.Repositories.InhousePartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 
 import com.example.demo.DataObjects.InhousePart;
-import com.example.demo.repositories.InhousePartRepository;
+import com.example.demo.Repositories.InhousePartRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

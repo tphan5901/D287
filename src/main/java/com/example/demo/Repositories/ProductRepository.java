@@ -1,4 +1,4 @@
-package com.example.demo.repositories;
+package com.example.demo.Repositories;
 import com.example.demo.DataObjects.Product;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

@@ -2,7 +2,7 @@ package com.example.demo.controllers;
 import com.example.demo.DataObjects.InhousePart;
 import com.example.demo.DataObjects.OutsourcedPart;
 import com.example.demo.DataObjects.Part;
-import com.example.demo.service.*;
+import com.example.demo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;

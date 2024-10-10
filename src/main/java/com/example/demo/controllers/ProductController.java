@@ -1,9 +1,9 @@
 package com.example.demo.controllers;
 import com.example.demo.DataObjects.Part;
 import com.example.demo.DataObjects.Product;
-import com.example.demo.service.PartService;
-import com.example.demo.service.ProductService;
-import com.example.demo.service.ProductServiceImpl;
+import com.example.demo.Service.PartService;
+import com.example.demo.Service.ProductService;
+import com.example.demo.Service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -62,11 +62,11 @@ public class ProductController {
         ProductService repo = context.getBean(ProductServiceImpl.class);
         Product newProduct = repo.searchById(Id);
         currentProduct=newProduct;
-        //set the employ as a model attribute to prepopulate the form
+        //set model attribute to populate the form
         model.addAttribute("product", newProduct);
         model.addAttribute("assparts",newProduct.getPart());
         model.addAttribute("availparts",getAvailableParts());
-        //send over to our form
+        //send to form
         return "productForm";
     }
 

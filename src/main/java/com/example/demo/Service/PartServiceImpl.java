@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 import com.example.demo.DataObjects.Part;
-import com.example.demo.repositories.PartRepository;
+import com.example.demo.Repositories.PartRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;

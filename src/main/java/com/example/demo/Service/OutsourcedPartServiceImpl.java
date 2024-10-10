@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.example.demo.Service;
 
 import com.example.demo.DataObjects.OutsourcedPart;
-import com.example.demo.repositories.OutsourcedPartRepository;
+import com.example.demo.Repositories.OutsourcedPartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,4 @@
 package com.example.demo.DataObjects;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
