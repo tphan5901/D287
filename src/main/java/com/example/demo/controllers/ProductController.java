@@ -32,7 +32,7 @@ public class ProductController {
         model.addAttribute("product", product);
         model.addAttribute("parts", partService.getAll());
         model.addAttribute("availparts", getAvailableParts());
-        model.addAttribute("assparts", product.getPart());
+        model.addAttribute("assparts", product.getParts());
         return "productForm";
     }
 
@@ -45,7 +45,7 @@ public class ProductController {
             Product product2=productService.searchById((int)product.getId());
             model.addAttribute("parts", partService.getAll());
             model.addAttribute("availparts",getAvailableParts());
-            model.addAttribute("assparts",product2.getPart());
+            model.addAttribute("assparts",product2.getParts());
             return "productForm";
         } else {
             ProductService repo = context.getBean(ProductServiceImpl.class);
@@ -64,7 +64,7 @@ public class ProductController {
         currentProduct=newProduct;
         //set model attribute to populate the form
         model.addAttribute("product", newProduct);
-        model.addAttribute("assparts",newProduct.getPart());
+        model.addAttribute("assparts",newProduct.getParts());
         model.addAttribute("availparts",getAvailableParts());
         //send to form
         return "productForm";
@@ -75,11 +75,11 @@ public class ProductController {
         ProductService productService = context.getBean(ProductServiceImpl.class);
         Product productToDelete = productService.searchById(Id);
         // Disassociate parts from the product
-        for (Part part : productToDelete.getPart()) { //for part of product
+        for (Part part : productToDelete.getParts()) { //for part of product
             part.getProducts().remove(productToDelete);
             partService.save(part);
         }
-        productToDelete.getPart().clear();
+        productToDelete.getParts().clear();
         productService.save(productToDelete); // Save updated product without parts
         productService.deleteById(Id);
         return "redirect:/home";
@@ -97,13 +97,13 @@ public class ProductController {
             currentProduct = new Product();
         }
 
-        currentProduct.getPart().add(partService.searchById(Id));
+        currentProduct.getParts().add(partService.searchById(Id));
         partService.searchById(Id).getProducts().add(currentProduct);
         productService.save(currentProduct);
         partService.save(partService.searchById(Id));
 
         model.addAttribute("product", currentProduct);
-        model.addAttribute("assparts",currentProduct.getPart());
+        model.addAttribute("assparts",currentProduct.getParts());
         model.addAttribute("availparts", getAvailableParts());
         return "productForm";
     }
@@ -111,7 +111,7 @@ public class ProductController {
     @GetMapping("/removepart")
     public String removePart(@RequestParam("partID") int Id, Model model){
         Part part = partService.searchById(Id);
-        currentProduct.getPart().remove(part);
+        currentProduct.getParts().remove(part);
         part.getProducts().remove(currentProduct);
 
         ProductService productService = context.getBean(ProductServiceImpl.class);
@@ -119,7 +119,7 @@ public class ProductController {
         partService.save(part);
 
         model.addAttribute("product", currentProduct);
-        model.addAttribute("assparts", currentProduct.getPart());
+        model.addAttribute("assparts", currentProduct.getParts());
         model.addAttribute("availparts", getAvailableParts());
         return "productForm";
     }

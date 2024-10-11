@@ -53,10 +53,10 @@ public class Product implements Serializable {
         this.inv = inv;
     }
 
-    public Set<Part> getPart() {
+    public Set<Part> getParts() {
         return parts;
     }
-    public void setPart(Set<Part> parts) {
+    public void setParts(Set<Part> parts) {
         this.parts = parts;
     }
 
