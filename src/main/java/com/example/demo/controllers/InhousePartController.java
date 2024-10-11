@@ -34,7 +34,6 @@ public class InhousePartController {
             repo.save(part);
             //redirectAttributes.addFlashAttribute("message", "Product deleted successfully!");
             return "redirect:/home";
-
     }
 
 }

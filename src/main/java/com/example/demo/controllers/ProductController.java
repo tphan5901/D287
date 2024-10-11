@@ -21,7 +21,6 @@ public class ProductController {
     private final PartService partService;
     private static Product currentProduct;
     private Product product;
-
     private List<Part> getAvailableParts() {
         return new ArrayList<>(partService.getAll());
     }
@@ -37,23 +36,13 @@ public class ProductController {
     }
 
     @PostMapping("/addProductForm")
-    public String submitForm(@Valid @ModelAttribute("product") Product product, BindingResult dataBinding, Model model) {
-        model.addAttribute("product", product);
+    public String submitForm(@ModelAttribute("product") Product product, Model model) {
+        ProductService repo = context.getBean(ProductServiceImpl.class);
+        repo.save(product);
+        currentProduct = product;
+        model.addAttribute("clearStorageScript", "localStorage.clear();");
 
-        if(dataBinding.hasErrors()){
-            ProductService productService = context.getBean(ProductServiceImpl.class);
-            Product product2=productService.searchById((int)product.getId());
-            model.addAttribute("parts", partService.getAll());
-            model.addAttribute("availparts",getAvailableParts());
-            model.addAttribute("assparts",product2.getParts());
-            return "productForm";
-        } else {
-            ProductService repo = context.getBean(ProductServiceImpl.class);
-            repo.save(product);
-            currentProduct = product;  // Assign the saved product to currentProduct
-            model.addAttribute("clearStorageScript", "localStorage.clear();");
-            return "redirect:/home";
-        }
+        return "redirect:/home";
     }
 
     @GetMapping("/UpdateProductForm")

@@ -60,6 +60,10 @@
         function clearSearch() {
             window.location = "/home";
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear session storage when home page loads
+            sessionStorage.removeItem('productData');
+        });
     </script>
 
     <br><br>
