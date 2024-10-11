@@ -22,7 +22,6 @@ public class PartController {
         OutsourcedPartService outsourcedRepo = context.getBean(OutsourcedPartServiceImpl.class);
         InhousePartService inhouseRepo = context.getBean(InhousePartServiceImpl.class);
 
-        // Check if part exists in outsourced parts
         OutsourcedPart outsourcedPart = outsourcedRepo.findById(Id);
         if (outsourcedPart != null) {
             model.addAttribute("outsourcedpart", outsourcedPart);

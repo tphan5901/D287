@@ -25,8 +25,7 @@ public class MainScreenController {
     }
 
     @GetMapping("/home")
-    public String display(Model model,
-                          @RequestParam(value = "partkeyword", defaultValue = "") String partKeyword,
+    public String display(Model model, @RequestParam(value = "partkeyword", defaultValue = "") String partKeyword,
                           @RequestParam(value = "productkeyword", defaultValue = "") String productKeyword) {
         List<Part> allParts = partService.searchPart(partKeyword);
         List<Product> allProducts = productService.searchProduct(productKeyword);
