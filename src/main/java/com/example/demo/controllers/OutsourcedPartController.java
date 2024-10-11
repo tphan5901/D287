@@ -29,15 +29,9 @@ public class OutsourcedPartController {
 
     @PostMapping("/OutsourcedPartForm")
     public String submitForm(@ModelAttribute("outsourcedpart") OutsourcedPart part, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
-            // model.addAttribute("outsourcedpart", part);
-            // return "OutsourcedPartForm";
-            return "redirect:/error";
-        } else {
         OutsourcedPartService repo=context.getBean(OutsourcedPartServiceImpl.class);
         repo.save(part);
         return "redirect:/home";
         }
-    }
 
 }

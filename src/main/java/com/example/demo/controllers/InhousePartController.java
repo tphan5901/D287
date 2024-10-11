@@ -30,17 +30,11 @@ public class InhousePartController {
 
     @PostMapping("/InhousePartForm")
     public String submitForm(@ModelAttribute("inhousepart") InhousePart part, BindingResult dataBinding, Model model){
-        if(dataBinding.hasErrors()){
-            //  model.addAttribute("inhousepart",part);
-            //  return "InhousePartForm";
-            return "redirect:/error";
-        } else {
             InhousePartService repo=context.getBean(InhousePartServiceImpl.class); //context.getBean returns instance of class and lets us access function properties
             repo.save(part);
-
             //redirectAttributes.addFlashAttribute("message", "Product deleted successfully!");
             return "redirect:/home";
-        }
+
     }
 
 }

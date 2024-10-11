@@ -9,7 +9,7 @@
 <body>
 <h1>Inhouse part Form</h1>
 
-<form action="#" id="partForm" th:action="@{/showFormAddInPart}" th:object="${inhousepart}" method="POST"}>
+<form action="#" id="partForm" th:action="@{/InhousePartForm}" th:object="${inhousepart}" method="POST">
     <p><input type="hidden" th:field="*{id}"/></p>
     <p> Name <input type="text" id = "name" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
     <p>Price<input type="text" id = "price" path="price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
