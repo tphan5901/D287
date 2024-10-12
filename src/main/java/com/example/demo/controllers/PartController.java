@@ -42,9 +42,15 @@ public class PartController {
             repo.deleteById(Id);
             return "redirect:/home";
         } else {
-            redirectAttributes.addFlashAttribute("messageTitle", "Error");
-            return "redirect:/error";
+    //        redirectAttributes.addFlashAttribute("messageTitle", "Error");
+            redirectAttributes.addFlashAttribute("errorMessage", "Cannot delete a part that is associated with a product.");
+            return "redirect:/partError";
         }
+    }
+
+    @GetMapping("/partError")
+    public String partError(Model model) {
+        return "partError";
     }
 
 }
