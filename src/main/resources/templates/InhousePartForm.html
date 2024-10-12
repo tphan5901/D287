@@ -12,11 +12,11 @@
 
 <form action="#" id="partForm" th:action="@{/InhousePartForm}" th:object="${inhousepart}" method="POST">
     <p><input type="hidden" th:field="*{id}"/></p>
-    <p> Name <input type="text" id = "name" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
-    <p>Price<input type="text" id = "price" path="price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
-    <p> Inventory <input type="text" id = "inventory" path="inv" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
-    <p> Min <input type="text" id = "min" th:field="*{minimum}" placeholder="Min" class="form-control mb-4 col-4"/></p>
-    <p> Max <input type="text" id = "max" th:field="*{maximum}" placeholder="Max" class="form-control mb-4 col-4"/></p>
+    <p> Name <input type="text" id = "name" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4" required/></p>
+    <p>Price<input type="text" id = "price" path="price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4" required/></p>
+    <p> Inventory <input type="text" id = "inventory" path="inv" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4" required/></p>
+    <p> Min <input type="text" id = "min" th:field="*{minimum}" placeholder="Min" class="form-control mb-4 col-4" required/></p>
+    <p> Max <input type="text" id = "max" th:field="*{maximum}" placeholder="Max" class="form-control mb-4 col-4" required/></p>
 
     <p><input type="submit" value="Submit" onclick = "validate()" class="btn btn-success"/></p>
 </form>
@@ -29,11 +29,12 @@
        let max = parseInt(document.getElementById('max').value);
        let price = document.getElementById('price').value;
 
-       if (!name || isNaN(inv) || isNaN(min) || isNaN(price) || isNaN(max)) {
+       if (!name || isNaN(inv) || isNaN(min) || !price || isNaN(max)) {
            alert('All fields should be filled out correctly.');
            event.preventDefault(); // Prevent form submission
            return;
        }
+
 
        if (min > max) {
            alert("Min cannot be greater than Max.");

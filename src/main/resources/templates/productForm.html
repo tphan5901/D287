@@ -13,9 +13,9 @@
 
 <form action="#"  id="productForm"  th:action="@{/addProductForm}" th:object="${product}" method="POST">
     <p><input type="hidden" th:field="*{id}"/></p>
-    <p>Name <input type="text" id = "name" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
-    <p>Price <input type="text" id = "price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
-    <p>Inventory <input type="text" id = "inventory" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
+    <p>Name <input type="text" id = "name" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4" required/></p>
+    <p>Price <input type="text" id = "price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4" required/></p>
+    <p>Inventory <input type="text" id = "inventory" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4" required/></p>
 
     <p><input type="submit" value="Submit" class="btn btn-success"/></p>
     <a href="/home" class="btn btn-primary">Mainscreen</a>
@@ -95,7 +95,7 @@
           let inv = document.getElementById('inventory').value;
           let price = document.getElementById('price').value;
 
-          if (!name || !inv || !price) {
+          if (!name || isNaN(inv) || !price) {
               alert('All fields must be filled out');
               event.preventDefault();
               return;
