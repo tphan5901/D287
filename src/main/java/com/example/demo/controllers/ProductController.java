@@ -14,12 +14,14 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+@SessionAttributes("currentProduct")
 @Controller
 public class ProductController {
     @Autowired
     private ApplicationContext context;
     private final PartService partService;
-    private static Product currentProduct;
+    private final ProductService productService;
+    private Product currentProduct;
     private Product product;
     private List<Part> getAvailableParts() {
         return new ArrayList<>(partService.getAll());
@@ -36,12 +38,14 @@ public class ProductController {
     }
 
     @PostMapping("/addProductForm")
-    public String submitForm(@ModelAttribute("product") Product product, Model model) {
-        ProductService repo = context.getBean(ProductServiceImpl.class);
-        repo.save(product);
-        currentProduct = product;
-        model.addAttribute("clearStorageScript", "localStorage.clear();");
-
+    public String submitForm(@Valid @ModelAttribute("product") Product product, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("parts", partService.getAll());
+            model.addAttribute("availparts", getAvailableParts());
+            return "productForm";
+        }
+        productService.save(product);
+        currentProduct = null;
         return "redirect:/home";
     }
 
@@ -74,8 +78,9 @@ public class ProductController {
         return "redirect:/home";
     }
 
-    public ProductController(PartService partService) {
+    public ProductController(PartService partService, ProductService productService) {
         this.partService = partService;
+        this.productService = productService;
     }
 
     @GetMapping("/associatepart")

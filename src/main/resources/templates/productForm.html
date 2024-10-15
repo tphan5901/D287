@@ -49,7 +49,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Inventory</th>
-        <th>Change</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -65,7 +65,7 @@
 
 <script th:inline="javascript">
     document.addEventListener('DOMContentLoaded', function() {
-          // load data from session storage
+          // Load data from session storage
           if (sessionStorage.getItem('productData')) {
               const productData = JSON.parse(sessionStorage.getItem('productData'));
               document.getElementById('name').value = productData.name || '';
@@ -73,7 +73,7 @@
               document.getElementById('inventory').value = productData.inv || '';
           }
 
-          // save data to session storage on input change
+          // Save data to session storage on input change
           document.getElementById('productForm').addEventListener('input', function() {
               const productData = {
                   name: document.getElementById('name').value,

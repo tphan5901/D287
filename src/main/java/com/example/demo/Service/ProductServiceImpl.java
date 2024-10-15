@@ -22,8 +22,8 @@ public class  ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product searchById(int Id) {
-        Optional<Product> result = productRepository.findById((long) Id);
+    public Product searchById(long Id) {
+        Optional<Product> result = productRepository.findById(Id);
         Product newProduct = null;
 
         if (result.isPresent()) {

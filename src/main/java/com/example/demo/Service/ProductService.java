@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProductService {
     public List<Product> getAll();
-    public Product searchById(int Id);
+    public Product searchById(long Id);
     public void save (Product product);
     public void deleteById(int Id);
     public List<Product> searchProduct(String keyword);
