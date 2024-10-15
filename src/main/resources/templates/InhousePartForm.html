@@ -29,7 +29,7 @@
        let max = parseInt(document.getElementById('max').value);
        let price = document.getElementById('price').value;
 
-       if (!name || isNaN(inv) || isNaN(min) || !price || isNaN(max)) {
+       if (!name || !inv || !min || !price || !max) {
            alert('All fields should be filled out correctly.');
            event.preventDefault(); // Prevent form submission
            return;
