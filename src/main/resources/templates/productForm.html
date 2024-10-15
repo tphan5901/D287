@@ -49,7 +49,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Inventory</th>
-        <th>Action</th>
+        <th>Change</th>
     </tr>
     </thead>
     <tbody>
@@ -65,7 +65,7 @@
 
 <script th:inline="javascript">
     document.addEventListener('DOMContentLoaded', function() {
-          // Load data from session storage
+          // load data from session storage
           if (sessionStorage.getItem('productData')) {
               const productData = JSON.parse(sessionStorage.getItem('productData'));
               document.getElementById('name').value = productData.name || '';
@@ -73,7 +73,7 @@
               document.getElementById('inventory').value = productData.inv || '';
           }
 
-          // Save data to session storage on input change
+          // save data to session storage on input change
           document.getElementById('productForm').addEventListener('input', function() {
               const productData = {
                   name: document.getElementById('name').value,
@@ -90,17 +90,29 @@
           });
       });
 
-      document.getElementById('productForm').addEventListener('submit', function(event) {
-          let name = document.getElementById('name').value;
-          let inv = document.getElementById('inventory').value;
-          let price = document.getElementById('price').value;
+       document.getElementById('productForm').addEventListener('submit', function(event) {
+       //important to parse inputs
+            let name = document.getElementById('name').value.trim();
+            let inv = parseInt(document.getElementById('inventory').value);
+            let price = parseFloat(document.getElementById('price').value);
+            let errorMessage = '';
 
-          if (!name || isNaN(inv) || !price) {
-              alert('All fields must be filled out');
-              event.preventDefault();
-              return;
-          }
-      });
+            if (!name) {
+                errorMessage += 'Name is empty. ';
+            }
+            if (!inv) {
+                errorMessage += 'Inventory cannot be empty. ';
+            }
+            if (!price) {
+                errorMessage += 'Price cannot be empty. ';
+            }
+
+            if (errorMessage) {
+                alert(errorMessage);
+                event.preventDefault();
+                return;
+            }
+        });
 </script>
 
 </body>
